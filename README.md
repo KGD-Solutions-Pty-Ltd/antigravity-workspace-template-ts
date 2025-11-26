@@ -154,6 +154,7 @@ The AI will automatically:
 - [x] **Phase 4: Advanced Memory** (Summary Buffer Implemented ✅)
 - [x] **Phase 5: Cognitive Architecture** (Generic Tool Dispatch Implemented ✅)
 - [x] **Phase 6: Dynamic Discovery** (Auto Tool & Context Loading ✅)
+- [x] **Phase 7: Multi-Agent Swarm** (Router-Worker Orchestration ✅)
 
 ## 🔥 New: True Zero-Config Tool & Context Loading
 
@@ -188,6 +189,57 @@ echo "# Project Rules\nUsefriendly language." > .context/project_rules.md
 
 The agent will follow these rules immediately on next run.
 
+## 🔥 New: Multi-Agent Swarm Protocol
+
+**Collaborate at scale!** The swarm enables multiple specialist agents to work together:
+
+### 🪐 Architecture: Router-Worker Pattern
+
+```mermaid
+graph TD
+    User[User Task] --> Router[🧭 Router Agent]
+    Router --> Coder[💻 Coder Agent]
+    Router --> Reviewer[🔍 Reviewer Agent]
+    Router --> Researcher[📚 Researcher Agent]
+    Coder --> Router
+    Reviewer --> Router
+    Researcher --> Router
+    Router --> Result[📊 Synthesized Result]
+```
+
+**Specialist Agents:**
+- **Router**: Analyzes tasks, delegates to specialists, synthesizes results
+- **Coder**: Writes clean, well-documented code
+- **Reviewer**: Checks quality, security, best practices
+- **Researcher**: Gathers information and insights
+
+### 🚀 Usage
+
+**Run the interactive demo:**
+```bash
+python -m src.swarm_demo
+```
+
+**Use in your code:**
+```python
+from src.swarm import SwarmOrchestrator
+
+swarm = SwarmOrchestrator()
+result = swarm.execute("Build a calculator and review it for security")
+print(result)
+```
+
+**Example output:**
+```
+🧭 [Router] Analyzing task...
+📤 [Router → Coder] Build a calculator
+💻 [Coder] Creating calculator implementation...
+✅ [Coder] Done!
+📤 [Router → Reviewer] Review for security
+🔍 [Reviewer] Analyzing code...
+✅ [Reviewer] Review complete!
+🎉 Task Completed!
+```
 ## 👥 Contributors
 
 A massive thank you to the community members who help build this project:
