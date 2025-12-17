@@ -1,0 +1,42 @@
+{
+  "name": "antigravity-agent",
+  "version": "1.0.0",
+  "description": "A production-grade AI agent wrapper for Gemini with MCP integration",
+  "type": "module",
+  "main": "dist/agent.js",
+  "types": "dist/agent.d.ts",
+  "scripts": {
+    "dev": "tsx src/agent.ts",
+    "dev:swarm": "tsx src/swarm-demo.ts",
+    "build": "tsc",
+    "start": "node dist/agent.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests --ext .ts"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "gemini",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^0.7.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

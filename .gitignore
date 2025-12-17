@@ -40,4 +40,11 @@ venv.bak/
 # Project specific
 logs/
 data/
-.opencode/
+
+# Node.js
+node_modules/
+dist/
+coverage/
+npm-debug.log
+yarn-error.log
+.DS_Store

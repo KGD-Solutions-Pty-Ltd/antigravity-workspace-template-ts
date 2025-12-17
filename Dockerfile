@@ -1,26 +1,23 @@
 # Build stage
-FROM python:3.12-slim as builder
+FROM node:22-slim as builder
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
+COPY package*.json ./
+RUN npm ci
 
 # Runtime stage
-FROM python:3.12-slim
+FROM node:22-slim
 
 WORKDIR /app
 
-# Copy installed packages from builder
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
+COPY --from=builder /app/node_modules ./node_modules
 
-# Copy application code
 COPY . .
 
-# Set environment variables
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH=/app
+# Build the TypeScript code
+RUN npm run build
 
-# Run the agent
-CMD ["python", "src/agent.py"]
+ENV NODE_ENV=production
+
+CMD ["node", "dist/agent.js"]
